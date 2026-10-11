@@ -4,4 +4,4 @@
 
 https://dongsiming-1110.github.io/ai-mingrizhiwai/
 
-原创人物使用 Blender 制作，通过 Three.js 播放跑步动画。Three.js 许可见 vendor/THREE-LICENSE.txt。
+绿色封面与半身毡布人物，包含鼠标注视、轻微转头与点头交互。
