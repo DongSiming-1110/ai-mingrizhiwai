@@ -1,0 +1,67 @@
+.hero.character-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 660px;
+  padding: 46px clamp(28px, 3vw, 56px) 80px;
+  margin-top: 28px;
+  margin-bottom: 34px;
+  grid-template-columns: minmax(0,1fr) minmax(290px,340px);
+  gap: clamp(36px, 20vw, 380px);
+  align-items: start;
+  border-radius: 12px;
+  background: radial-gradient(ellipse at 61% 45%, #f8f1e5 0%, #ece2d2 48%, #e6dac9 100%);
+}
+.character-hero .hero-main, .character-hero .hero-contact { position: relative; z-index: 2; }
+.character-hero .hero-main { max-width: 620px; margin-top: 45px; pointer-events: none; }
+.character-hero .hero-main a, .character-hero .hero-contact a { pointer-events: auto; }
+.character-hero .hero-contact { margin-top: 14px; padding: 26px; background: rgba(255,253,248,.77); border-top-color: #ae8264; pointer-events: none; }
+.character-hero .hero-contact h2 { font-size: 23px; }
+.character-hero .email { font-size: 17px; gap: 10px; }
+.character-hero .identity { gap: 18px; }
+.character-hero .profile-avatar { width: 74px; height: 74px; }
+.character-hero .intro { font-size: 18px; }
+.character-layer { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.character-layer canvas { display: block; width: 100%; height: 100%; pointer-events: none; }
+.character-layer canvas:focus-visible { outline: 2px solid var(--accent); outline-offset: -5px; }
+.character-space { display: none; }
+.character-hint { position: absolute; bottom: 22px; left: clamp(28px,3vw,56px); z-index: 2; font-size: 11px; color: #756656; pointer-events: none; }
+.character-hint span { margin-left: 12px; }
+.destination { position: absolute; left: 0; top: 0; width: 32px; height: 12px; margin: -6px 0 0 -16px; border: 1px solid #a67552; border-radius: 50%; opacity: 0; pointer-events: none; z-index: 0; }
+.destination.is-active { animation: destination-pulse .8s ease-out 2; }
+@keyframes destination-pulse { 0% { opacity: .7; transform: scale(.6); } 100% { opacity: 0; transform: scale(2); } }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.character-fallback { position: absolute; width: auto; height: 340px; left: 61%; bottom: 36px; object-fit: contain; transform: translateX(-50%); }
+.character-layer[data-renderer="webgl"] .character-fallback { display: none; }
+.character-sprite { position: absolute; pointer-events: none; }
+.character-sprite .character-fallback { inset: 0; width: 100%; height: 100%; transform: none; object-fit: contain; }
+.character-run-frames { display: none; position: absolute; inset: 0; background: url('./assets/creator-run-atlas.webp') no-repeat; background-size: 800% 100%; }
+.character-sprite.is-running .character-fallback { visibility: hidden; }
+.character-sprite.is-running .character-run-frames { display: block; }
+@media(max-width: 1200px) and (min-width: 1001px) {
+  .hero.character-hero { gap: 125px; grid-template-columns: minmax(0,1fr) 290px; padding-inline: 30px; }
+  .character-hero h1 { font-size: 38px; }
+  .character-hero .profile-avatar { width: 58px; height: 58px; }
+}
+@media(max-width: 1000px) {
+  .hero.character-hero { grid-template-columns: 1fr; gap: 0; padding: 30px 28px 56px; min-height: 0; }
+  .character-hero .hero-main { margin-top: 0; max-width: none; }
+  .character-hero .hero-contact { margin-top: 0; max-width: none; width: 100%; }
+  .character-space { display: block; height: 275px; }
+  .character-fallback { height: 240px; top: 350px; bottom: auto; left: 52%; }
+  .character-hint { bottom: 18px; left: 28px; }
+  .character-hero .contact-links { display: grid; grid-template-columns: 1fr 1fr; }
+}
+@media(max-width: 650px) {
+  .hero.character-hero { padding: 26px 22px 52px; margin-top: 18px; margin-bottom: 20px; border-radius: 8px; }
+  .character-hero .identity { gap: 12px; }
+  .character-hero .profile-avatar { width: 58px; height: 58px; }
+  .character-hero h1 { font-size: clamp(23px,6.2vw,30px); }
+  .character-hero .intro { font-size: 15px; }
+  .character-hero .hero-contact { padding: 22px; }
+  .character-hero .hero-contact h2 { font-size: 20px; }
+  .character-hero .contact-links { display: flex; }
+  .character-space { height: 245px; }
+  .character-hint { font-size: 10px; left: 22px; }
+}
+@media(prefers-reduced-motion: reduce) { .destination.is-active { animation: none; } }
