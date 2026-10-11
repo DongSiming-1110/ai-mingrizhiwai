@@ -16,7 +16,7 @@ function resize(){
  if(getComputedStyle(corridor).display!=='none'){
   h=corridor.clientHeight;w=h*2/3;x=(stage.clientWidth-w)/2;y=corridor.offsetTop;
  }else{
-  w=Math.min(stage.clientWidth*.46,stage.clientHeight*.67);h=w*1.5;x=stage.clientWidth-w-8;y=stage.clientHeight-h;
+  w=Math.min(stage.clientWidth*.51,stage.clientHeight*.76);h=w*1.5;x=stage.clientWidth-w;y=Math.max(10,stage.clientHeight-h);
  }
  figure.style.width=w+'px';figure.style.height=h+'px';figure.style.left=x+'px';figure.style.top=y+'px';figure.style.bottom='auto';figure.style.right='auto';
  layer.dataset.portraitHeight=h.toFixed(1);
